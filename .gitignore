@@ -1,4 +1,8 @@
 target/
 *.log
 serve.pid
+android-sdk/
+android/build/
+android/assets/
+android/debug.keystore
 .DS_Store

@@ -50,6 +50,7 @@ const els = {
   pad: document.getElementById('btnPad'),
   speed: document.getElementById('btnSpeed'),
   full: document.getElementById('btnFull'),
+  install: document.getElementById('btnInstall'),
   file: document.getElementById('file'),
   toast: document.getElementById('toast'),
 };
@@ -66,6 +67,8 @@ const app = {
   speed: 1,
   games: [],
 };
+
+let installPrompt = null;
 
 /* ---------------------------------------------------------------- input -- */
 
@@ -545,6 +548,31 @@ function wireControls() {
       toast('Saved state is not compatible');
     }
   });
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    els.install.hidden = false;
+  });
+  window.addEventListener('appinstalled', () => {
+    installPrompt = null;
+    els.install.hidden = true;
+    toast('Installed — works offline');
+  });
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    els.install.hidden = true;
+  }
+  els.install.addEventListener('click', async () => {
+    if (!installPrompt) {
+      toast('Use the browser menu → “Add to Home screen”');
+      return;
+    }
+    installPrompt.prompt();
+    try {
+      await installPrompt.userChoice;
+    } catch {}
+    installPrompt = null;
+    els.install.hidden = true;
+  });
   els.full.addEventListener('click', async () => {
     try {
       if (!document.fullscreenElement) {
@@ -581,6 +609,7 @@ function wireControls() {
 }
 
 async function boot() {
+  registerServiceWorker();
   wirePad();
   wireKeyboard();
   wireControls();
@@ -621,6 +650,17 @@ async function boot() {
     els.badge.textContent = 'No ROM loaded';
   }
   render();
+}
+
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  window.addEventListener('load', async () => {
+    try {
+      await navigator.serviceWorker.register('sw.js');
+    } catch {
+      // Offline caching is a bonus: the emulator still runs without it.
+    }
+  });
 }
 
 boot();

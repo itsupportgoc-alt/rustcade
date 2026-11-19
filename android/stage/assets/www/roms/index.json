@@ -1,0 +1,114 @@
+[
+  {
+    "id": "invaders",
+    "title": "Space Invaders",
+    "file": "invaders.ch8",
+    "system": "chip8",
+    "by": "David Winter, 1990",
+    "hint": "◀ ▶ move · A fire"
+  },
+  {
+    "id": "tetris",
+    "title": "Tetris",
+    "file": "tetris.ch8",
+    "system": "chip8",
+    "by": "Fran Dachille, 1991",
+    "hint": "◀ ▶ move · A rotate · 8 soft drop"
+  },
+  {
+    "id": "brix",
+    "title": "Brix",
+    "file": "brix.ch8",
+    "system": "chip8",
+    "by": "Andreas Gustafsson, 1990",
+    "hint": "◀ ▶ move · A fire"
+  },
+  {
+    "id": "cave",
+    "title": "Cave",
+    "file": "cave.ch8",
+    "system": "chip8",
+    "by": "homebrew",
+    "hint": "◀ ▶ move · ▲ ▼ climb"
+  },
+  {
+    "id": "astro",
+    "title": "Astro Dodge",
+    "file": "astro.ch8",
+    "system": "chip8",
+    "by": "Revival Studios, 2008",
+    "hint": "◀ ▶ steer · A start"
+  },
+  {
+    "id": "worm",
+    "title": "Worm V4",
+    "file": "worm.ch8",
+    "system": "chip8",
+    "by": "RB-Revival Studios, 2007",
+    "hint": "◀ ▶ ▲ ▼ steer"
+  },
+  {
+    "id": "blinky",
+    "title": "Blinky",
+    "file": "blinky.ch8",
+    "system": "chip8",
+    "by": "Hans Christian Egeberg, 1991",
+    "hint": "◀ ▶ ▲ ▼ move · A start"
+  },
+  {
+    "id": "tron",
+    "title": "Tron",
+    "file": "tron.ch8",
+    "system": "chip8",
+    "by": "homebrew",
+    "hint": "◀ ▶ ▲ ▼ turn"
+  },
+  {
+    "id": "tank",
+    "title": "Tank",
+    "file": "tank.ch8",
+    "system": "chip8",
+    "by": "homebrew",
+    "hint": "◀ ▶ ▲ ▼ drive · A fire"
+  },
+  {
+    "id": "pong",
+    "title": "Pong",
+    "file": "pong.ch8",
+    "system": "chip8",
+    "by": "1 player",
+    "hint": "Keypad: 1 up · 4 down"
+  },
+  {
+    "id": "puzzle15",
+    "title": "15 Puzzle",
+    "file": "puzzle15.ch8",
+    "system": "chip8",
+    "by": "Roger Ivie",
+    "hint": "Keypad: 1–4 pick a tile"
+  },
+  {
+    "id": "lander",
+    "title": "Lunar Lander",
+    "file": "lander.ch8",
+    "system": "chip8",
+    "by": "Udo Pernisz, 1979",
+    "hint": "Keypad: 1–9 thrust"
+  },
+  {
+    "id": "gb-cpu-instrs",
+    "title": "GB · CPU Test",
+    "file": "gb/cpu_instrs.gb",
+    "system": "gb",
+    "by": "blargg, public test ROM",
+    "hint": "Runs all 11 CPU instruction tests and prints the result on screen"
+  },
+  {
+    "id": "gb-ppu-acid2",
+    "title": "GB · PPU Test",
+    "file": "gb/dmg-acid2.gb",
+    "system": "gb",
+    "by": "Matt Currie, dmg-acid2",
+    "hint": "Reference image: the face must be correct, with no missing sprites"
+  }
+]

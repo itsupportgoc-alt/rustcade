@@ -95,6 +95,40 @@ Game Boy ones include:
 * MBC1 banking (including mode 1 and RAM), timer overflow, joypad rows, serial
   capture, state round-trip and a background/VBlank PPU test.
 
+## Install on Android
+
+**As a PWA (no store, works offline).** Open the hosted app in Chrome, then either tap
+**install** in the toolbar (it appears when the browser fires `beforeinstallprompt`) or
+use *⋮ → Add to Home screen*. The service worker (`web/sw.js`) precaches the HTML,
+JS, `emulator.wasm`, icons and every bundled ROM, so the app launches and plays with
+the phone in flight mode. `manifest.webmanifest` ships 192/512 px and maskable PNG
+icons and `display: fullscreen`.
+
+**As an APK.** `android/` builds a WebView wrapper with the Gradle-free toolchain
+(aapt2 + javac + d8 + zipalign + apksigner):
+
+```bash
+# one-time: Android SDK + build tools inside the project (gitignored)
+cd android-sdk
+curl -LO https://dl.google.com/android/repository/commandlinetools-win-11076708_latest.zip
+jar xf commandlinetools-win-11076708_latest.zip
+mkdir -p cmdline-tools && mv cmdline-tools cmdline-tools-tmp \
+  && mkdir cmdline-tools && mv cmdline-tools-tmp cmdline-tools/latest
+yes | cmdline-tools/latest/bin/sdkmanager.bat --sdk_root="$PWD" --licenses
+cmdline-tools/latest/bin/sdkmanager.bat --sdk_root="$PWD" \
+  "platforms;android-34" "build-tools;34.0.0"
+
+# build
+cd .. && JAVA_HOME=/path/to/jdk17 bash android/build.sh
+# -> android/build/RustCade.apk
+```
+
+The APK bundles the web build as assets and serves it to a WebView from a private
+`https://appassets.androidplatform.net` origin, so `fetch()` and WASM instantiation
+behave exactly as on the web. It requests **no permissions at all** (not even
+INTERNET) and is signed with a local debug key. No NDK is used: the Rust core runs
+as the same WebAssembly module, not as a JNI `.so`.
+
 ## Honest scope
 
 Emulating *all PC games* (x86 Windows + DirectX) on a phone is not what this repo

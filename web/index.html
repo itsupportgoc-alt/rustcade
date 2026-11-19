@@ -11,6 +11,12 @@
     <title>RustCade — Rust emulator in your pocket</title>
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RustCade" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body data-system="chip8">
@@ -48,6 +54,7 @@
           <button class="tool c8-only" id="btnPad" type="button" aria-label="Toggle hex keypad">123</button>
           <button class="tool" id="btnSpeed" type="button" aria-label="Emulation speed">1×</button>
           <button class="tool" id="btnFull" type="button" aria-label="Fullscreen">⛶</button>
+          <button class="tool install" id="btnInstall" type="button" hidden>install</button>
           <label class="tool file" for="file">
             + rom
             <input id="file" type="file" accept=".ch8,.sc8,.xo8,.bin,.gb,.gbc" />

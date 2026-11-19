@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="theme-color" content="#070b09" />
+    <meta name="description" content="A fast Rust emulator core that runs arcade and Game Boy games in your phone browser." />
+    <title>RustCade — Rust emulator in your pocket</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RustCade" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-system="chip8">
+    <div id="app" class="app">
+      <header class="bar">
+        <div class="brand">
+          <span class="led" aria-hidden="true"></span>
+          <div class="brand-text">
+            <h1>RustCade</h1>
+            <p id="sysline">Rust cores · CHIP-8 / SCHIP · Game Boy DMG</p>
+          </div>
+        </div>
+        <div class="stats">
+          <span><b id="fps">--</b> fps</span>
+          <span><b id="hz">--</b> <span id="hzUnit">Hz</span></span>
+        </div>
+      </header>
+
+      <main>
+        <div class="bezel" id="bezel">
+          <canvas id="screen" width="640" height="320" aria-label="Emulator screen"></canvas>
+          <div class="overlay" id="overlay" hidden></div>
+          <div class="badge" id="badge">No ROM loaded</div>
+        </div>
+
+        <p class="hint" id="hint">Pick a game below, or open any .ch8 / .gb ROM from your phone.</p>
+
+        <nav class="roms" id="roms" aria-label="Games"></nav>
+
+        <div class="tools">
+          <button class="tool" id="btnPause" type="button" aria-label="Pause">❚❚</button>
+          <button class="tool" id="btnReset" type="button" aria-label="Reset">↺</button>
+          <button class="tool" id="btnSave" type="button" aria-label="Save state">save</button>
+          <button class="tool" id="btnLoad" type="button" aria-label="Load state">load</button>
+          <button class="tool c8-only" id="btnPad" type="button" aria-label="Toggle hex keypad">123</button>
+          <button class="tool" id="btnSpeed" type="button" aria-label="Emulation speed">1×</button>
+          <button class="tool" id="btnFull" type="button" aria-label="Fullscreen">⛶</button>
+          <button class="tool install" id="btnInstall" type="button" hidden>install</button>
+          <label class="tool file" for="file">
+            + rom
+            <input id="file" type="file" accept=".ch8,.sc8,.xo8,.bin,.gb,.gbc" />
+          </label>
+        </div>
+      </main>
+
+      <footer class="pad">
+        <div class="dpad" role="group" aria-label="Direction pad">
+          <button class="padkey up" type="button" data-chip="2" data-gb="2" aria-label="Up">▲</button>
+          <button class="padkey left" type="button" data-chip="4" data-gb="1" aria-label="Left">◀</button>
+          <span class="hub" aria-hidden="true"></span>
+          <button class="padkey right" type="button" data-chip="6" data-gb="0" aria-label="Right">▶</button>
+          <button class="padkey down" type="button" data-chip="8" data-gb="3" aria-label="Down">▼</button>
+        </div>
+        <div class="systemkeys gb-only" role="group" aria-label="Start and select">
+          <button class="padkey pill" type="button" data-gb="6" aria-label="Select">SELECT</button>
+          <button class="padkey pill" type="button" data-gb="7" aria-label="Start">START</button>
+        </div>
+        <div class="actions" role="group" aria-label="Action buttons">
+          <button class="padkey round secondary" type="button" data-chip="14" data-gb="5" aria-label="B button">B</button>
+          <button class="padkey round primary" type="button" data-chip="5" data-gb="4" aria-label="A button">A</button>
+        </div>
+        <div class="keypad" id="keypad" hidden aria-label="Hex keypad"></div>
+      </footer>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>
