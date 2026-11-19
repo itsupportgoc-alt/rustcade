@@ -104,8 +104,10 @@ JS, `emulator.wasm`, icons and every bundled ROM, so the app launches and plays 
 the phone in flight mode. `manifest.webmanifest` ships 192/512 px and maskable PNG
 icons and `display: fullscreen`.
 
-**As an APK.** `android/` builds a WebView wrapper with the Gradle-free toolchain
-(aapt2 + javac + d8 + zipalign + apksigner):
+**As an APK.** Download the signed build from
+[releases/tag/v1.0.0](https://github.com/itsupportgoc-alt/rustcade/releases/tag/v1.0.0)
+(`RustCade-1.0.0.apk`, ~76 KB, no permissions), or build it yourself — `android/`
+uses the Gradle-free toolchain (aapt2 + javac + d8 + zipalign + apksigner):
 
 ```bash
 # one-time: Android SDK + build tools inside the project (gitignored)
