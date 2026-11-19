@@ -4,5 +4,6 @@ serve.pid
 android-sdk/
 android/build/
 android/assets/
+android/stage/
 android/debug.keystore
 .DS_Store
