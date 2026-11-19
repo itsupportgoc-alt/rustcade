@@ -1,0 +1,4 @@
+target/
+*.log
+serve.pid
+.DS_Store

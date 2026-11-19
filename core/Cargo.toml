@@ -1,0 +1,8 @@
+[package]
+name = "chip8"
+version = "0.1.0"
+edition = "2021"
+description = "Dependency-free CHIP-8 / SUPER-CHIP / XO-CHIP interpreter"
+license = "MIT"
+
+[dependencies]

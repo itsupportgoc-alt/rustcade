@@ -1,0 +1,12 @@
+[package]
+name = "rustcade-wasm"
+version = "0.1.0"
+edition = "2021"
+description = "WebAssembly bridge for the RustCade emulator core"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+chip8 = { path = "../core" }
